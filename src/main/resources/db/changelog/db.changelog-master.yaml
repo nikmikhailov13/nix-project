@@ -8,3 +8,6 @@ databaseChangeLog:
   - include:
       file: 003-create-table-student.yaml
       relativeToChangelogFile: true
+  - include:
+      file: 004-create-table-photo.yaml
+      relativeToChangelogFile: true
