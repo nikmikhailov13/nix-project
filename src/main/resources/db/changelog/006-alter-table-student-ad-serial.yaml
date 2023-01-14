@@ -1,0 +1,10 @@
+databaseChangeLog:
+  - changeSet:
+      id: 6
+      author: nikita
+      changes:
+        - modifyDataType:
+            schemaName: nix
+            tableName: student
+            columnName: id
+            newDataType: serial
