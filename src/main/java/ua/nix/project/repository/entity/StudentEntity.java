@@ -1,29 +1,34 @@
 package ua.nix.project.repository.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
+import org.hibernate.annotations.GenericGenerator;
+
+import java.util.List;
 
 @Entity
 @Setter
 @Getter
+@ToString
 @Table(name = "student", schema = "nix")
 public class StudentEntity {
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @Column
-  private long id;
+    @Id
+    @GeneratedValue(generator = "increment")
+    @GenericGenerator(name = "increment", strategy = "increment")
+    @Column
+    private long id;
 
-  @Column
-  private String name;
+    @Column
+    private String name;
 
-  @Column
-  private String email;
+    @Column
+    private String email;
+////    @OneToMany(mappedBy = "student", fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @JoinColumn(name = "student_id")
+    private List<PhotoEntity> photos;
 
 }

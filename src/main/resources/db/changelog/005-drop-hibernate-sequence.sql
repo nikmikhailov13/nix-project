@@ -1,1 +1,1 @@
-DROP SEQUENCE public.hibernate_sequence;
+DROP SEQUENCE hibernate_sequence;

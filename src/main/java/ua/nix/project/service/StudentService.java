@@ -8,16 +8,13 @@ import ua.nix.project.repository.entity.StudentEntity;
 @Service
 @RequiredArgsConstructor
 public class StudentService {
+    private final StudentRepository studentRepository;
 
-  private final StudentRepository studentRepository;
-
-  public void createStudent(String name, String email) {
-
-    StudentEntity studentEntity = new StudentEntity();
-    studentEntity.setName(name);
-    studentEntity.setEmail(email);
-
-    studentRepository.save(studentEntity);
-  }
-
+    public void createStudent(String name, String email) {
+        StudentEntity studentEntity = new StudentEntity();
+        studentEntity.setName(name);
+        studentEntity.setEmail(email);
+        System.out.println(studentEntity);
+        studentRepository.save(studentEntity);
+    }
 }
