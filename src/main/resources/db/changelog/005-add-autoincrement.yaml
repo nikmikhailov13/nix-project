@@ -1,0 +1,15 @@
+databaseChangeLog:
+  - changeSet:
+      id: 5
+      author: nikl
+      changes:
+        - addAutoIncrement:
+            catalogName: nix
+            columnDataType: bigint
+            columnName: id
+            defaultOnNull: false
+            generationType: ALWAYS
+            incrementBy: 1
+            schemaName: nix
+            startWith: 100
+            tableName: student
