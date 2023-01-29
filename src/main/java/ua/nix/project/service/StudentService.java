@@ -5,6 +5,9 @@ import org.springframework.stereotype.Service;
 import ua.nix.project.entity.StudentEntity;
 import ua.nix.project.repository.StudentRepository;
 
+import java.util.List;
+import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
 public class StudentService {
@@ -20,6 +23,22 @@ public class StudentService {
         studentRepository.save(studentEntity);
 
         return studentEntity;
+    }
+    public List<StudentEntity> findAll() {
+        return studentRepository.findAll();
+    }
+
+    public StudentEntity findById(long id) {
+        Optional<StudentEntity> optionalStudent = studentRepository.findById(id);
+        return optionalStudent.orElse(null);
+    }
+
+    public StudentEntity save(StudentEntity student) {
+        return studentRepository.save(student);
+    }
+
+    public void delete(StudentEntity student) {
+        studentRepository.delete(student);
     }
 
 }
