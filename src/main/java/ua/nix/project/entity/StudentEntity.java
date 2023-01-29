@@ -1,5 +1,6 @@
 package ua.nix.project.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -23,7 +24,8 @@ public class StudentEntity {
     @Column
     private String email;
 
-    @OneToMany(mappedBy="student")
+    @JsonIgnore
+    @OneToMany(mappedBy="student",fetch = FetchType.LAZY)
     private Set<PhotoEntity> photos;
 
 }
