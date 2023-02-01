@@ -1,7 +1,9 @@
 package ua.nix.project.service;
 
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import ua.nix.project.exception.StudentNotFoundException;
 import ua.nix.project.repository.StudentRepository;
 import ua.nix.project.repository.entity.StudentEntity;
 
@@ -21,17 +23,41 @@ public class StudentService {
     public StudentEntity createStudent(StudentEntity studentEntity) {
         return studentRepository.save(studentEntity);
     }
-    public StudentEntity updateStudent(Long studentId,StudentEntity studentEntity) {
-         studentRepository.updateStudent(studentId, studentEntity.getName(), studentEntity.getEmail());
-         return  studentRepository.findById(studentId).orElseThrow();
+
+    public StudentEntity updateStudent(StudentEntity studentEntity) {
+
+        StudentEntity entity = studentRepository.findById(studentEntity.getId())
+            .orElseThrow(StudentNotFoundException::new);
+
+        if (studentEntity.getName() != null){
+            entity.setName(studentEntity.getName());
+        }
+
+        if (studentEntity.getEmail() != null){
+            entity.setEmail(studentEntity.getEmail());
+        }
+
+        if (studentEntity.getPhotos() != null  && studentEntity.getPhotos().isEmpty()){
+            entity.setPhotos(studentEntity.getPhotos());
+        }
+
+        return studentRepository.save(entity);
     }
+
+
     public List<StudentEntity> getStudents () {
-        return  studentRepository.findAll();
+        return studentRepository.findAll();
     }
+
     public StudentEntity getStudent(Long studentId){
-        return  studentRepository.findById(studentId).orElseThrow();
+        return studentRepository.findById(studentId)
+            .orElseThrow(StudentNotFoundException::new);
     }
     public void deleteStudent(Long studentId){
-        studentRepository.deleteById(studentId);
+
+        StudentEntity entity = studentRepository.findById(studentId)
+            .orElseThrow(StudentNotFoundException::new);
+
+        studentRepository.delete(entity);
     }
 }

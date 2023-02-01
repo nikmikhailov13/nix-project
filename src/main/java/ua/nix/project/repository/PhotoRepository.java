@@ -6,5 +6,6 @@ import ua.nix.project.repository.entity.PhotoEntity;
 
 @Repository
 public interface PhotoRepository extends JpaRepository<PhotoEntity, Long> {
-    PhotoEntity findByDescription(String description);
+
+  PhotoEntity findByDescription(String description);
 }

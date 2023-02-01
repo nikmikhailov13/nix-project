@@ -1,8 +1,5 @@
 spring:
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/nix?currentSchema=nix
-    username: postgres
-    password: ${password}
-liquibase:
-  liquibaseSchemaName:nix
+    url: jdbc:postgresql://localhost:5432/nikitamykhailov
+    username: nikitamykhailov

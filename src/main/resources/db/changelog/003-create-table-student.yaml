@@ -20,4 +20,3 @@ databaseChangeLog:
               - column:
                   name: email
                   type: text
-

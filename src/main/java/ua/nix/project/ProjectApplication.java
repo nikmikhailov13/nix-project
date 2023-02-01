@@ -1,7 +1,6 @@
 package ua.nix.project;
 
 import java.util.Arrays;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -21,6 +20,7 @@ public class ProjectApplication {
   private StudentRepository studentRepository;
   @Autowired
   private PhotoRepository photoRepository;
+
   public static void main(String[] args) {
     SpringApplication.run(ProjectApplication.class, args);
   }
@@ -37,7 +37,7 @@ public class ProjectApplication {
       for (String beanName : beanNames) {
         System.out.println(beanName);
       }
-      studentService.createStudent("Mark", "mark1234@gmail.com");
+      // studentService.createStudent("Mark", "mark1234@gmail.com");
     };
   }
 
