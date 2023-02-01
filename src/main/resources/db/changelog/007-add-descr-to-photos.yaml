@@ -1,0 +1,12 @@
+databaseChangeLog:
+  - changeSet:
+      id: 7
+      author: nikl
+      changes:
+        - addColumn:
+            tableName: photo
+            schemaName: nix
+            columns:
+              - column:
+                  name: descr
+                  type: varchar(50)
