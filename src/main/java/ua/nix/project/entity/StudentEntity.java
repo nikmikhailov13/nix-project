@@ -2,7 +2,9 @@ package ua.nix.project.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Set;
@@ -11,6 +13,8 @@ import java.util.Set;
 @Setter
 @Getter
 @Table(name = "student", schema = "nix")
+@AllArgsConstructor
+@NoArgsConstructor
 public class StudentEntity {
 
     @Id
